@@ -1,8 +1,8 @@
 import { useState } from "react";
 import SetupQuiz from "./components/setupQuiz.jsx";
-import LoadingQuiz from "./components/LoadingQuiz";
-import CardQuiz from "./components/CardQuiz";
-import ResultQuiz from "./components/ResultQuiz";
+import LoadingQuiz from "./components/loadingQuiz";
+import CardQuiz from "./components/cardQuiz";
+import ResultQuiz from "./components/resultQuiz";
 import useFetch from "./hooks/useFetch.js";
 import useQuiz from "./hooks/useQuiz.js"
 
