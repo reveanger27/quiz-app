@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function useQuiz (questions) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [answers, setAnswers] = useState([]);
+    const [highScore, setHighScore] = useState(
+        Number(localStorage.getItem("quizHighScore")) || 0
+    );
 
     const submitAnswer = (answer) => {
         const currentQuestion = questions[currentIndex];
@@ -31,13 +34,22 @@ function useQuiz (questions) {
         setAnswers([]);
     }
 
+    useEffect(() => {
+    const currentScore = score();
+        if (currentScore > highScore) {
+            localStorage.setItem("quizHighScore", currentScore)
+            setHighScore(currentScore)
+        }
+    }, [answers]);
+
     return {
         currentIndex,
         answers,
         score,
         submitAnswer,
         isFinished,
-        resetQuiz
+        resetQuiz,
+        highScore
     }
 
 }

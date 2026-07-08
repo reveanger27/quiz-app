@@ -1,6 +1,6 @@
 import decodeHTML from "../utils/decodeHTML";
 
-function ResultQuiz({ answers, score, resetQuiz, setPhase, setSettings }) {
+function ResultQuiz({ answers, score, resetQuiz, setPhase, setSettings, highScore }) {
   const handleReset = () => {
     resetQuiz();
     setPhase("setup");
@@ -15,9 +15,10 @@ function ResultQuiz({ answers, score, resetQuiz, setPhase, setSettings }) {
           <p className="font-display text-4xl font-bold text-gray-800">
             {score()} <span className="text-xl text-gray-400">/ {answers.length}</span>
           </p>
+          <p className="font-display text-lg text-pink-900">Score Tertinggi: {highScore}</p>
         </div>
 
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-6 overflow-y-auto max-h-80 px-4 py-2">
           {answers.map((a, index) => (
             <div
               key={index}

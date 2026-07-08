@@ -23,12 +23,12 @@ function App() {
     : null;
 
   const { data, loading, error } = useFetch(url);
-  const { currentIndex, answers, submitAnswer, score, isFinished, resetQuiz } = useQuiz(data || []);
+  const { currentIndex, answers, submitAnswer, score, isFinished, resetQuiz, highScore } = useQuiz(data || []);
 
   if (phase === "setup") return <SetupQuiz setPhase={setPhase} settings={settings} updateSetting={updateSetting} />;
   if (phase === "loading") return <LoadingQuiz setPhase={setPhase} data={data} loading={loading} error={error} />;
   if (phase === "quiz") return <CardQuiz key={currentIndex} setPhase={setPhase} data={data} currentIndex={currentIndex} answers={answers} submitAnswer={submitAnswer} score={score} isFinished={isFinished}/>;
-  if (phase === "result") return <ResultQuiz answers={answers} score={score} resetQuiz={resetQuiz} setSettings={setSettings} setPhase={setPhase}/>;
+  if (phase === "result") return <ResultQuiz answers={answers} score={score} resetQuiz={resetQuiz} setSettings={setSettings} setPhase={setPhase} highScore={highScore}/>;
 
 }
 
